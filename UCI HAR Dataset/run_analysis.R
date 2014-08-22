@@ -1,5 +1,5 @@
 run_analysis<-function(){
-        setwd("./cleandata/UCI HAR Dataset")
+        setwd("./cleandatacourse/cleandata/UCI HAR Dataset")
         
         ##read in training data, activities and subjects and put them together
         traindata<-read.table("./train/X_train.txt")
@@ -39,8 +39,10 @@ run_analysis<-function(){
 
         ##create table that calculates mean of 561 vars by activity, by subject
         answer<-aggregate(.~activity+subject,data=data,FUN=mean)
-        answer
 
         ##write data set to a file
         write.table(answer,"answer.txt",row.name=FALSE)
+
+        ##return data table to function call
+        answer
 }
